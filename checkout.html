@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout - Amazon Clone</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span>amazon</span>
+
+            <small>.clone</small>
+
+        </div>
+
+
+        <a
+            href="cart.html"
+            class="cart"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            <strong>
+                Back to Cart
+            </strong>
+
+        </a>
+
+    </header>
+
+
+
+    <!-- ================================================= -->
+    <!-- SECOND NAV -->
+    <!-- ================================================= -->
+
+    <nav class="sub-nav">
+
+        <a href="index.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            Home
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- ================================================= -->
+    <!-- CHECKOUT PAGE -->
+    <!-- ================================================= -->
+
+    <main class="checkout-page">
+
+
+        <h1>
+            Checkout
+        </h1>
+
+
+
+        <!-- ================================================= -->
+        <!-- DELIVERY ADDRESS -->
+        <!-- ================================================= -->
+
+        <section class="checkout-section">
+
+            <h2>
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Delivery Address
+
+            </h2>
+
+
+            <div class="address-form">
+
+
+                <input
+                    type="text"
+                    id="full-name"
+                    placeholder="Full Name"
+                    autocomplete="name"
+                >
+
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Mobile Number"
+                    maxlength="10"
+                    autocomplete="tel"
+                >
+
+
+                <textarea
+                    id="address"
+                    placeholder="Enter your full delivery address"
+                    rows="4"
+                    autocomplete="street-address"
+                ></textarea>
+
+
+                <div class="address-row">
+
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="City"
+                        autocomplete="address-level2"
+                    >
+
+
+                    <input
+                        type="text"
+                        id="pincode"
+                        placeholder="PIN Code"
+                        maxlength="6"
+                        inputmode="numeric"
+                        autocomplete="postal-code"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- PAYMENT METHOD -->
+        <!-- ================================================= -->
+
+        <section class="checkout-section">
+
+
+            <h2>
+
+                <i class="fa-solid fa-credit-card"></i>
+
+                Payment Method
+
+            </h2>
+
+
+
+            <div class="payment-options">
+
+
+                <!-- ================= CARD ================= -->
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="card"
+                        checked
+                    >
+
+                    <span>
+                        💳 Card
+                    </span>
+
+                </label>
+
+
+
+                <!-- ================= UPI ================= -->
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="upi"
+                    >
+
+                    <span>
+                        📱 UPI
+                    </span>
+
+                </label>
+
+
+
+                <!-- ================= COD ================= -->
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="cod"
+                    >
+
+                    <span>
+                        💵 Cash on Delivery
+                    </span>
+
+                </label>
+
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- CARD DETAILS -->
+            <!-- ================================================= -->
+
+            <div
+                class="payment-details"
+                id="card-details"
+            >
+
+
+                <input
+                    type="text"
+                    id="card-number"
+                    placeholder="Card Number"
+                    maxlength="16"
+                    inputmode="numeric"
+                    autocomplete="off"
+                >
+
+
+                <div class="payment-row">
+
+
+                    <input
+                        type="text"
+                        id="expiry"
+                        placeholder="MM/YY"
+                        maxlength="5"
+                        inputmode="numeric"
+                        autocomplete="off"
+                    >
+
+
+                    <input
+                        type="password"
+                        id="cvv"
+                        placeholder="CVV"
+                        maxlength="3"
+                        inputmode="numeric"
+                        autocomplete="off"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- UPI DETAILS -->
+            <!-- ================================================= -->
+
+            <div
+                class="payment-details"
+                id="upi-details"
+                style="display: none;"
+            >
+
+
+                <input
+                    type="text"
+                    id="upi-id"
+                    placeholder="Enter UPI ID (example@upi)"
+                    autocomplete="off"
+                >
+
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- COD MESSAGE -->
+            <!-- ================================================= -->
+
+            <div
+                id="cod-details"
+                class="payment-details"
+                style="display: none;"
+            >
+
+                <p>
+                    💵 You will pay when your order is delivered.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================================= -->
+        <!-- ORDER SUMMARY -->
+        <!-- ================================================= -->
+
+        <section
+            class="checkout-section order-summary"
+        >
+
+
+            <h2>
+
+                <i class="fa-solid fa-receipt"></i>
+
+                Order Summary
+
+            </h2>
+
+
+
+            <!-- CART ITEMS -->
+
+            <div id="checkout-items">
+
+                <!-- Products will be loaded by script.js -->
+
+            </div>
+
+
+
+            <!-- ITEMS TOTAL -->
+
+            <div class="summary-line">
+
+                <span>
+                    Items Total
+                </span>
+
+                <strong id="items-total">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+
+            <!-- DELIVERY -->
+
+            <div class="summary-line">
+
+                <span>
+                    Delivery
+                </span>
+
+                <strong class="free">
+                    FREE
+                </strong>
+
+            </div>
+
+
+
+            <hr>
+
+
+
+            <!-- ORDER TOTAL -->
+
+            <div class="summary-total">
+
+                <span>
+                    Order Total
+                </span>
+
+                <strong id="order-total">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- DEMO PAYMENT BUTTON -->
+            <!-- ================================================= -->
+
+            <button
+                type="button"
+                id="pay-button"
+                class="pay-btn"
+            >
+
+                <i class="fa-solid fa-lock"></i>
+
+                Demo Payment
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================================================= -->
+    <!-- ONLY ONE JAVASCRIPT FILE -->
+    <!-- ================================================= -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
