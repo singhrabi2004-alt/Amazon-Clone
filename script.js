@@ -1892,6 +1892,10 @@ function setupLogin() {
                 message.textContent =
                     "Login successful!";
 
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1000);
+
             } catch (error) {
 
                 message.textContent =
