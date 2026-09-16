@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login - Nova Cart</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>nova</span>
+            <small>cart</small>
+        </div>
+
+        <a
+            href="index.html"
+            class="cart"
+        >
+            <i class="fa-solid fa-house"></i>
+            <strong>Home</strong>
+        </a>
+
+    </header>
+
+
+    <main class="auth-page">
+
+        <div class="auth-box">
+
+            <h1>Login</h1>
+
+            <form id="login-form">
+
+                <label for="login-email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="login-email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="login-password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <p
+                id="login-message"
+                class="auth-message"
+            ></p>
+
+
+            <p class="auth-switch">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js?v=2"></script>
+
+</body>
+
+</html>

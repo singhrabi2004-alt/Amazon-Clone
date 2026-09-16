@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Orders - Nova Cart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span>nova</span>
+
+            <small>cart</small>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= ORDERS ================= -->
+
+    <main class="orders-page">
+
+        <h1>
+            My Orders
+        </h1>
+
+        <div id="orders-container">
+
+            <p>
+                Loading orders...
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        async function loadOrders() {
+    
+            const ordersContainer =
+                document.getElementById(
+                    "orders-container"
+                );
+    
+    
+            try {
+    
+                const user =
+    JSON.parse(
+        localStorage.getItem("loggedInUser")
+    );
+
+if (!user) {
+    ordersContainer.innerHTML = `
+        <p>
+            Please login first.
+        </p>
+    `;
+    return;
+}
+
+const response =
+    await fetch(
+        `http://localhost:5000/api/orders?userId=${user.id}`
+    );
+    
+    
+                const orders =
+                    await response.json();
+    
+    
+                if (!orders.length) {
+    
+                    ordersContainer.innerHTML = `
+                        <p>
+                            No orders found.
+                        </p>
+                    `;
+    
+                    return;
+    
+                }
+    
+    
+                ordersContainer.innerHTML =
+                    "";
+    
+    
+                orders.reverse().forEach(
+                    order => {
+    
+                        const orderCard =
+                            document.createElement(
+                                "div"
+                            );
+    
+    
+                        orderCard.className =
+                            "order-card";
+    
+    
+                        orderCard.innerHTML = `
+    
+                            <h2>
+                                Order #${order.orderNumber}
+                            </h2>
+    
+                            <p>
+                                <strong>
+                                    Customer:
+                                </strong>
+                                ${order.customerName}
+                            </p>
+    
+                            <p>
+                                <strong>
+                                    Amount:
+                                </strong>
+                                ₹${Number(order.total)
+                                    .toLocaleString("en-IN")}
+                            </p>
+    
+                            <p>
+                                <strong>
+                                    Payment:
+                                </strong>
+                                ${order.paymentMethod.toUpperCase()}
+                            </p>
+    
+                            <p>
+                                <strong>
+                                    Date:
+                                </strong>
+                                ${order.date}
+                            </p>
+    
+                            <h3>
+                                Products
+                            </h3>
+    
+                            <div>
+    
+                                ${
+                                    (order.items || [])
+                                        .map(item => `
+                                            <p>
+                                                ${item.image || ""}
+                                                ${item.name}
+                                                × ${item.quantity || 1}
+                                            </p>
+                                        `)
+                                        .join("")
+                                }
+    
+                            </div>
+    
+                        `;
+    
+    
+                        ordersContainer.appendChild(
+                            orderCard
+                        );
+    
+                    }
+                );
+    
+    
+            } catch (error) {
+    
+                console.error(
+                    "Error loading orders:",
+                    error
+                );
+    
+    
+                ordersContainer.innerHTML = `
+                    <p>
+                        Unable to load orders.
+                    </p>
+                `;
+    
+            }
+    
+        }
+    
+    
+        loadOrders();
+    
+    </script>
+
+
+</body>
+
+</html>

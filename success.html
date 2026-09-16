@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Order Successful - Amazon Clone</title>
+    <title>Order Successful - Nova Cart</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -31,9 +31,9 @@
 
         <div class="logo">
 
-            <span>amazon</span>
+            <span>nova</span>
 
-            <small>.clone</small>
+            <small>cart</small>
 
         </div>
 
@@ -65,7 +65,7 @@
 
 
             <p>
-                Thank you for shopping with Amazon Clone.
+                Thank you for shopping with Nova Cart
             </p>
 
 
@@ -136,42 +136,99 @@
 
     <script>
 
-        const order =
+        const savedOrder =
             JSON.parse(
                 localStorage.getItem("lastOrder")
             );
-
-
-        if (order) {
-
+    
+    
+        function displayOrder(order) {
+    
             document.getElementById(
                 "order-number"
             ).textContent =
                 "#" + order.orderNumber;
-
-
+    
+    
             document.getElementById(
                 "amount-paid"
             ).textContent =
                 "₹" +
-                order.total.toLocaleString("en-IN");
-
-
+                Number(order.total)
+                    .toLocaleString("en-IN");
+    
+    
             document.getElementById(
                 "payment-method"
             ).textContent =
                 order.paymentMethod.toUpperCase();
-
-
+    
+    
             document.getElementById(
                 "customer-name"
             ).textContent =
                 order.customerName;
-
+    
         }
-
+    
+    
+        async function loadOrder() {
+    
+            if (!savedOrder) {
+    
+                console.log(
+                    "No order found"
+                );
+    
+                return;
+    
+            }
+    
+    
+            // Display saved order first
+            displayOrder(savedOrder);
+    
+    
+            // Then get latest order from MongoDB
+            try {
+    
+                const response =
+                    await fetch(
+                        `http://localhost:5000/api/orders/${savedOrder.orderNumber}`
+                    );
+    
+    
+                if (!response.ok) {
+                    return;
+                }
+    
+    
+                const order =
+                    await response.json();
+    
+    
+                // Update page with MongoDB order
+                displayOrder(order);
+    
+    
+                console.log(
+                    "Order loaded from MongoDB"
+                );
+    
+            } catch (error) {
+    
+                console.log(
+                    "MongoDB fetch failed, using saved order"
+                );
+    
+            }
+    
+        }
+    
+    
+        loadOrder();
+    
     </script>
-
 
 </body>
 
