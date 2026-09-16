@@ -18,7 +18,7 @@ async function loadProducts() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/products"
+            "https://nova-cart-backend.onrender.com/api/products"
         );
 
         if (!response.ok) {
@@ -546,7 +546,7 @@ async function setupProductDetails() {
 
                     const response =
                         await fetch(
-                            `http://localhost:5000/api/cart/${user.id}`,
+                            `https://nova-cart-backend.onrender.com/api/cart/${user.id}`,
                             {
                                 method: "PUT",
 
@@ -615,7 +615,7 @@ function setupCartPage() {
 
             const response =
                 await fetch(
-                    `http://localhost:5000/api/cart/${user.id}`
+                    `https://nova-cart-backend.onrender.com/api/cart/${user.id}`
                 );
 
             if (!response.ok) {
@@ -839,7 +839,7 @@ function setupCartPage() {
                             try {
 
                                 await fetch(
-                                    `http://localhost:5000/api/cart/${user.id}`,
+                                    `https://nova-cart-backend.onrender.com/api/cart/${user.id}`,
                                     {
                                         method: "PUT",
 
@@ -926,7 +926,7 @@ const user =
                             try {
 
                                 await fetch(
-                                    `http://localhost:5000/api/cart/${user.id}`,
+                                    `https://nova-cart-backend.onrender.com/api/cart/${user.id}`,
                                     {
                                         method: "PUT",
 
@@ -1010,7 +1010,7 @@ const user =
                             try {
 
                                 await fetch(
-                                    `http://localhost:5000/api/cart/${user.id}`,
+                                    `https://nova-cart-backend.onrender.com/api/cart/${user.id}`,
                                     {
                                         method: "PUT",
 
@@ -1578,7 +1578,7 @@ function setupCheckoutPage() {
 
                     const response =
                         await fetch(
-                            "http://localhost:5000/api/orders",
+                            "https://nova-cart-backend.onrender.com/api/orders",
                             {
                                 method: "POST",
 
@@ -1635,7 +1635,7 @@ function setupCheckoutPage() {
 
 if (user) {
     await fetch(
-        `http://localhost:5000/api/cart/${user.id}`,
+        `https://nova-cart-backend.onrender.com/api/cart/${user.id}`,
         {
             method: "PUT",
             headers: {
@@ -1762,7 +1762,7 @@ function setupRegistration() {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/register",
+                        "https://nova-cart-backend.onrender.com/api/register",
                         {
                             method: "POST",
 
@@ -1849,7 +1849,7 @@ function setupLogin() {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/login",
+                        "https://nova-cart-backend.onrender.com/api/login",
                         {
                             method: "POST",
 
